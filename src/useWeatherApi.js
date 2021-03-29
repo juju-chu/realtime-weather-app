@@ -2,7 +2,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const fetchCurrentWeather = (locationName) => {
-  console.log('locationName: ', locationName)
   return fetch(
     `https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-B1A98B60-ACBC-4F8E-ACA5-F7CB99425BD3&locationName=${locationName}`
   )
@@ -13,7 +12,6 @@ const fetchCurrentWeather = (locationName) => {
         (neededElements, item) => {
           if (['WDSD', 'TEMP', 'HUMD'].includes(item.elementName)) {
             neededElements[item.elementName] = item.elementValue
-            console.log('item.elementName: ', item.elementValue)
           }
           return neededElements
         }
